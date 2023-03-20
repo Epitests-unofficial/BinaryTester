@@ -10,9 +10,22 @@ Tests:
     name: "echo 2"
     description: "Echo test, example2 with predefined output"
     command: "echo 'This is an example'"
-    testType: "string"
-    comparsionType: "string"
+    testType: "expect"
     expected:
-      stdout: "This is an example"
+      stdout:
+        string: "This is an example\n"
+        
       stderr: ""
       exitCode: 0
+    
+  -
+    name: "Fail test"
+    description: "This test will fail"
+    command: "echo 'This is an example'"
+    testType: "expect"
+    expected:
+      stdout:
+        string: "This is an example"
+        
+      stderr: ""
+      exitCode: 1
