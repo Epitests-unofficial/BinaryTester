@@ -1,0 +1,18 @@
+Tests:
+  -
+    name: "echo"
+    description: "Echo Test, this is an example"
+    command: "echo 'This is an example'"
+    testType: "refer"
+    referCommand: "echo 'This is an example'"
+
+  -
+    name: "echo 2"
+    description: "Echo test, example2 with predefined output"
+    command: "echo 'This is an example'"
+    testType: "string"
+    comparsionType: "string"
+    expected:
+      stdout: "This is an example"
+      stderr: ""
+      exitCode: 0
