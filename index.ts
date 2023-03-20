@@ -1,3 +1,4 @@
 import argsHandler from './src/argsHandler.js';
+import runTests from './src/runTests.js';
 
-console.log((await argsHandler(process.argv.slice(2))));
+runTests((await argsHandler(process.argv.slice(2))));
