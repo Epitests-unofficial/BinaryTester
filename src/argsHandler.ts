@@ -11,24 +11,24 @@ async function parseArguments(args: string[]): Promise<Runner> {
         settings: {
             output: 'stdout',
             outputFormat: 'text',
-            timeout: -1,
+            timeout: 0,
             verbose: false,
             status: false,
             runList: [],
+            stopWhenFail: false,
         },
+        numberSuccess: 0,
+        numberFail: 0,
     };
     for (let i = 0; i < args.length; i++) {
         switch (args[i]) {
             case '-o': case '--output':
-                if (args[i + 1] === undefined || args[i + 1] !== 'stdout' && args[i + 1] !== 'stderr')
-                    error("Invalid output (must be 'stdout' or 'stderr' or 'file')");
+                if (args[i + 1] === undefined)
+                    error("Invalid output (must be 'file [json or yaml]')");
                 runner.settings.output = args[i + 1];
-                i++;
-                break;
-            case '-of': case '--output-format':
-                if (args[i + 1] === undefined || args[i + 1] !== 'json' && args[i + 1] !== 'text')
-                    error('Invalid output format');
-                runner.settings.outputFormat = args[i + 1];
+                runner.settings.outputFormat = 'yaml';
+                if (args[i + 1].endsWith('.json'))
+                    runner.settings.outputFormat = 'json';
                 i++;
                 break;
             case '-t': case '--timeout':
@@ -42,6 +42,9 @@ async function parseArguments(args: string[]): Promise<Runner> {
                 break;
             case '-s': case '--status':
                 runner.settings.status = true;
+                break;
+            case '-swf': case '--stop-when-fail':
+                runner.settings.stopWhenFail = true;
                 break;
             case '-r': case '--runList':
                 if (args[i + 1] === undefined || args[i + 1].split(',').some((x) => isNaN(parseInt(x))))
