@@ -2,11 +2,11 @@
   "name": "binarytester",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "binaryTester.js",
   "type": "module",
   "scripts": {
-    "build": "echo 'Compilation' && tsc && cp dist/* . -r",
-    "clean": "echo 'Cleaning' && rm $(find ./src/ -name '*.js') && rm index.js"
+    "build": "echo 'Compilation' && tsc && cp dist/* . -r && cat src/shebang > binaryTester && cat binaryTester.js >> binaryTester && chmod +x binaryTester && rm -rf dist",
+    "clean": "echo 'Cleaning' && rm $(find ./src/ -name '*.js') && rm binaryTester.js binaryTester"
   },
   "author": "",
   "license": "ISC",
