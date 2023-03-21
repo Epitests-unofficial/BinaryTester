@@ -44,11 +44,14 @@ export default function createOutput(runner: Runner): void {
             break;
         default:
             print_end(runner);
-            return;
+            break;
     }
     try {
-        fs.writeFileSync(runner.settings.output, output);
+        if (output !== undefined)
+            fs.writeFileSync(runner.settings.output, output);
     } catch (err) {
         error(`Error writing to file: ${err}`);
     }
+    if (runner.settings.status && runner.numberFail > 0)
+        process.exit(1);
 }

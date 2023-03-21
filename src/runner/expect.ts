@@ -13,8 +13,8 @@ function compareStdout(run: string, test: Test): Boolean {
     if (test.expected.stdout === undefined || (test.expected.stdout.string === undefined && test.expected.stdout.regex === undefined)) {
         return true;
     }
-    if (test.expected.stdout.string !== undefined && test.expected.stdout.string !== run)
-        return false;
+    if (test.expected.stdout.string !== undefined && test.expected.stdout.string === run)
+        return true;
     if (test.expected.stdout.regex !== undefined) {
         let reg = new RegExp(test.expected.stdout.regex);
         return reg.test(run);
@@ -25,8 +25,8 @@ function compareStderr(run: string, test: Test): Boolean {
     if (test.expected.stderr === undefined || (test.expected.stderr.string === undefined && test.expected.stderr.regex === undefined)) {
         return true;
     }
-    if (test.expected.stderr.string !== undefined && test.expected.stderr.string !== run)
-        return false;
+    if (test.expected.stderr.string !== undefined && test.expected.stderr.string === run)
+        return true;
     if (test.expected.stderr.regex !== undefined) {
         let reg = new RegExp(test.expected.stderr.regex);
         return reg.test(run);
