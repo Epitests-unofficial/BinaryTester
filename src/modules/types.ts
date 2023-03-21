@@ -1,7 +1,23 @@
+export type Match = {
+    string: string;
+    regex: string;
+}
+
 export type Out = {
-    stdout: string;
-    stderr: string;
+    stdout: Match;
+    stderr: Match;
     exitCode: number;
+}
+
+export type Result = {
+    status: 'success' | 'fail' | 'skipped' | 'pending';
+    msg: string;
+    result: {
+        stdout: string;
+        stderr: string;
+        exitCode: number;
+    };
+    timeTaken: number;
 }
 
 export type Test = {
@@ -9,11 +25,10 @@ export type Test = {
     name: string;
     description: string;
     command: string;
-    testType: 'refer' | 'string';
+    testType: 'refer' | 'expect';
     referCommand: string;
-    comparsionType: 'string' | 'regex';
     expected: Out;
-    regex: Out;
+    result: Result;
 }
 
 export type Settings = {
@@ -23,10 +38,21 @@ export type Settings = {
     verbose: boolean;
     status: boolean;
     runList: Array<number>;
+    stopWhenFail: boolean;
 }
 
 export type Runner = {
     testFilePath: string;
     tests: Array<Test>;
     settings: Settings;
+    numberSuccess: number;
+    numberFail: number;
+}
+
+export type Output = {
+    success: boolean;
+    numberSuccess: number;
+    numberFail: number;
+    numberSkipped: number;
+    testResults: Array<Test>;
 }
