@@ -12,7 +12,7 @@ function parseOut(test: any): Out {
         expected.stdout = test.stdout;
     if (test.stderr)
         expected.stderr = test.stderr;
-    if (test.exitCode)
+    if (test.exitCode !== undefined)
         expected.exitCode = test.exitCode;
     return expected;
 }

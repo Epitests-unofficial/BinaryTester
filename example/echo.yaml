@@ -21,11 +21,7 @@ Tests:
   -
     name: "Fail test"
     description: "This test will fail"
-    command: "echo 'This is an example'"
+    command: "eco 'This is an example'"
     testType: "expect"
     expected:
-      stdout:
-        string: "This is an example"
-        
-      stderr: ""
-      exitCode: 1
+      exitCode: 0
