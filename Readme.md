@@ -40,7 +40,9 @@ It's just what BinaryTester do !
 ### Test by yourself
 
 1. Clone this repo
-2. Run ```npm run build```
-3. Then you can test it in the current directory with ```./binaryTester``` or with ```node binaryTester.js```
-4. Help with ```./binaryTester -h```
+2. Run ```npm run build``` to build package locally
+3. Then you can test it in the current directory with ```node src/binaryTester.js```
+4. Help with ```binaryTester -h```
 5. Example of tests files in [Examples](https://github.com/Epitests-unofficial/BinaryTester/tree/main/example)
+6. Run ```npm run installPack``` to install package globally ("Works only in linux")
+   Then you have ```binaryTester``` globally in any directory you want
