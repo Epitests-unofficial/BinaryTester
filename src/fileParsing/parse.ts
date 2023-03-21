@@ -30,22 +30,19 @@ export default async function parse(runner: Runner, doc: any): Promise<Runner> {
                 command: test.command,
                 testType: test.testType,
                 referCommand: undefined,
-                comparsionType: test.comparsionType,
                 expected: undefined,
-                regex: undefined
+                result: undefined
             };
             if (test.testType === 'refer')
                 testObj.referCommand = test.referCommand;
-            else if (test.testType === "string" && test.comparsionType === 'string')
+            else if (test.testType === "expect")
                 testObj.expected = parseOut(test.expected);
-            else if (test.testType === "string" && test.comparsionType === 'regex')
-                testObj.regex = parseOut(test.expected);
             else
                 throw new Error(`Invalid testType or comparsionType in test ${testObj.id}`);
             tests.push(testObj);
         }
     } catch(e) {
-        error(`Error parsing YAML: ${e}`);
+        error(`Error parsing: ${e}`);
     }
     runner.tests = tests;
     return runner;
