@@ -1,0 +1,2 @@
+#!/bin/bash
+":" //# comment; exec /usr/bin/env node --input-type=module - "$@" < "$0"
