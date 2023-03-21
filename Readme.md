@@ -4,6 +4,11 @@ What if you can test every single program you make, test Stdout, test Stderr and
 
 It's just what BinaryTester do !
 
+### Requirements
+
+You must have nodejs and npm installed
+It Works only on linux
+
 ### Examples
 
 1. For this example, I choose to test echo command, I think this command is safe but anyway we test it....
@@ -44,5 +49,5 @@ It's just what BinaryTester do !
 3. Then you can test it in the current directory with ```node src/binaryTester.js```
 4. Help with ```binaryTester -h```
 5. Example of tests files in [Examples](https://github.com/Epitests-unofficial/BinaryTester/tree/main/example)
-6. Run ```npm run installPack``` to install package globally ("Works only in linux")
+6. Run ```npm run installPack``` to install package globally
    Then you have ```binaryTester``` globally in any directory you want
