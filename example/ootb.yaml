@@ -1,0 +1,7 @@
+Tests:
+     -
+       name: "echo"
+       description: "Echo Test, this is an example"
+       command: "echo 'This is an example'"
+       testType: "refer"
+       referCommand: "echo 'This is an example'"
