@@ -3,14 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "binaryTester.js",
-  "type": "module",
   "scripts": {
-    "build": "echo 'Compilation' && npm i && tsc && cp dist/* . -r && cat src/shebang > binaryTester && cat binaryTester.js >> binaryTester && chmod +x binaryTester && rm -rf dist",
-    "clean": "echo 'Cleaning' && rm $(find ./src/ -name '*.js') && rm binaryTester.js binaryTester"
+    "build": "echo 'Compilation' && npm i && tsc && cp dist/* ./src/. -r && rm -rf dist",
+    "clean": "echo 'Cleaning' && rm $(find ./src/ -name '*.js')",
+    "installPack": "echo 'Installing' && npm run build && sudo npm link"
+  },
+  "bin": {
+    "binaryTester": "bin/cli"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "esm": "^3.2.25",
     "fs": "^0.0.1-security",
     "i": "^0.3.7",
     "js-yaml": "^4.1.0",
